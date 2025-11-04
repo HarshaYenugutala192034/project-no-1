@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivicConnect | Citizen & Politician Communication Platform</title>
+    <style>
+        /* ---------- RESET ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ---------- GLOBAL ---------- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0077cc;
+        }
+
+        header {
+            background: #003366;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00ccff;
+        }
+
+        /* ---------- HERO SECTION ---------- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00ccff;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0099cc;
+        }
+
+        /* ---------- ABOUT SECTION ---------- */
+        section {
+            padding: 60px 0;
+        }
+
+        h2.section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #003366;
+        }
+
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about img {
+            flex: 1 1 400px;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .about-text {
+            flex: 1 1 400px;
+        }
+
+        /* ---------- ROLES SECTION ---------- */
+        .roles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .role {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .role:hover {
+            transform: translateY(-5px);
+        }
+
+        .role h3 {
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        /* ---------- CONTACT SECTION ---------- */
+        .contact form {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .contact button {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact button:hover {
+            background: #005599;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ---------- HEADER ---------- -->
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#roles">Roles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ---------- HERO SECTION ---------- -->
+    <section class="hero">
+        <h1>Welcome to CivicConnect</h1>
+        <p>Bridging the gap between citizens and politicians through transparency and communication.</p>
+        <a href="#about" class="btn">Learn More</a>
+    </section>
+
+    <!-- ---------- ABOUT SECTION ---------- -->
+    <section id="about">
+        <div class="container about">
+            <img src="https://images.unsplash.com/photo-1528747045269-390fe33c19b7?auto=format&fit=crop&w=800&q=80" alt="About CivicConnect">
+            <div class="about-text">
+                <h2 class="section-title">About the Platform</h2>
+                <p>
+                    CivicConnect is a web platform designed to make it easier for citizens to communicate with their elected representatives.
+                    It allows users to report issues, provide feedback, and receive updates directly from politicians.
+                    The goal is to improve transparency, trust, and responsiveness in governance.
+                </p>
+                <p>
+                    Every interaction on the platform is moderated and monitored to maintain respect and constructive dialogue between all parties.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- ROLES SECTION ---------- -->
+    <section id="roles">
+        <div class="container">
+            <h2 class="section-title">User Roles</h2>
+            <div class="roles">
+                <div class="role">
+                    <h3>Admin</h3>
+                    <p>Oversees platform operations, manages user roles, and ensures data integrity.</p>
+                </div>
+                <div class="role">
+                    <h3>Citizen</h3>
+                    <p>Reports issues, provides feedback, and receives updates from politicians.</p>
+                </div>
+                <div class="role">
+                    <h3>Politician</h3>
+                    <p>Responds to citizen concerns, posts updates, and engages in discussions.</p>
+                </div>
+                <div class="role">
+                    <h3>Moderator</h3>
+                    <p>Monitors interactions, ensures respectful dialogue, and upholds community standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------- CONTACT SECTION ---------- -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Your Full Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <textarea name="message" rows="5" placeholder="Your Message or Feedback" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ---------- FOOTER ---------- -->
+    <footer>
+        <p>&copy; 2025 CivicConnect | Developed for FEDF-PS08 – Citizen & Politician Interaction Platform</p>
+    </footer>
+
+</body>
+</html>
