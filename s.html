@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS: External vs Internal vs Inline</title>
+  <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+
+  <style>
+    /* Internal CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+    }
+
+    .internal {
+      background-color: #fff8dc; /* light yellow */
+      border-left: 4px solid goldenrod;
+      padding: 10px;
+    }
+
+    .specificity {
+      color: green; /* internal tries green */
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS: External vs Internal vs Inline</h1>
+  <p>Open DevTools and inspect each box to see where the styles come from.</p>
+
+  <h2>External CSS</h2>
+  <div class="external">Styled by <strong>external</strong> CSS from <code>styles.css</code>.</div>
+
+  <h2>Internal CSS</h2>
+  <div class="internal">Styled by <strong>internal</strong> CSS in the <code>&lt;style&gt;</code> tag of this page.</div>
+
+  <h2>Inline CSS</h2>
+  <div style="background-color: #e6ffe6; border-left: 4px solid green; padding: 10px;">
+    Styled by <strong>inline</strong> CSS via the <code>style=""</code> attribute on this element.
+  </div>
+
+  <h2>Specificity Showdown (Who wins?)</h2>
+  <p>The same element is targeted by external, internal, and inline rules:</p>
+  <ul>
+    <li>External sets it to <strong>blue</strong></li>
+    <li>Internal tries to make it <strong>green</strong></li>
+    <li>Inline forces it to <strong>red</strong></li>
+  </ul>
+
+  <p class="specificity" style="color: red;">This text is affected by all three — but inline wins (red)!</p>
+</body>
+</html>

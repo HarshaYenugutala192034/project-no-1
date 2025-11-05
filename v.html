@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interactive JavaScript in HTML — Example</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    body { max-width:800px; margin:32px auto; padding:16px; line-height:1.45; }
+    header { display:flex; align-items:center; gap:12px; }
+    input, button { padding:8px; font-size:16px; }
+    ul { padding-left:18px; }
+    li { margin:8px 0; }
+    .done { text-decoration:line-through; opacity:0.6; }
+    .controls { margin-top:8px; }
+    .note { color:#666; font-size:14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Small To‑Do App (JS inside &lt;script&gt;)</h1>
+  </header>
+
+  <section>
+    <p>Add a task, press <kbd>Enter</kbd> or the <strong>Add</strong> button.</p>
+    <div>
+      <input id="taskInput" type="text" placeholder="Type a task (e.g. Buy milk)" />
+      <button id="addBtn">Add</button>
+    </div>
+    <div class="controls">
+      <button id="clearCompleted">Clear completed</button>
+      <button id="clearAll">Clear all</button>
+    </div>
+    <p class="note">Tasks persist locally in your browser (localStorage).</p>
+
+    <ul id="taskList" aria-live="polite"></ul>
+  </section>
+
+  <!-- JavaScript embedded directly inside HTML tags -->
+  <script>
+    // Simple to-do list using modern JS (no libraries)
+    const input = document.getElementById('taskInput');
+    const addBtn = document.getElementById('addBtn');
+    const list = document.getElementById('taskList');
+    const clearCompleted = document.getElementById('clearCompleted');
+    const clearAll = document.getElementById('clearAll');
+
+    // Load saved tasks from localStorage (if any)
+    const STORAGE_KEY = 'simple_todo_tasks_v1';
+    let tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+    // Render tasks into the DOM
+    function render() {
+      list.innerHTML = '';
+      if (tasks.length === 0) {
+        const empty = document.createElement('li');
+        empty.textContent = 'No tasks yet — add one above.';
+        empty.style.color = '#666';
+        list.appendChild(empty);
+        return;
+      }
+
+      tasks.forEach((t, i) => {
+        const li = document.createElement('li');
+        const label = document.createElement('label');
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = t.done;
+        cb.addEventListener('change', () => {
+          tasks[i].done = cb.checked;
+          save();
+          render();
+        });
+
+        const span = document.createElement('span');
+        span.textContent = ' ' + t.text + ' ';
+        if (t.done) span.classList.add('done');
+
+        const del = document.createElement('button');
+        del.textContent = 'Delete';
+        del.style.marginLeft = '8px';
+        del.addEventListener('click', () => {
+          tasks.splice(i, 1);
+          save();
+          render();
+        });
+
+        label.appendChild(cb);
+        label.appendChild(span);
+        li.appendChild(label);
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+    }
+
+    function save() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    }
+
+    function addTask(text) {
+      const trimmed = text.trim();
+      if (!trimmed) {
+        // simple validation: don't add empty tasks
+        input.classList.add('invalid');
+        input.placeholder = 'Please enter a non-empty task';
+        return;
+      }
+      tasks.push({ text: trimmed, done: false });
+      save();
+      render();
+      input.value = '';
+      input.focus();
+    }
+
+    addBtn.addEventListener('click', () => addTask(input.value));
+
+    // allow Enter key to submit
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') addTask(input.value);
+    });
+
+    clearCompleted.addEventListener('click', () => {
+      tasks = tasks.filter(t => !t.done);
+      save();
+      render();
+    });
+
+    clearAll.addEventListener('click', () => {
+      if (!confirm('Clear all tasks?')) return;
+      tasks = [];
+      save();
+      render();
+    });
+
+    // initial render
+    render();
+
+    // --- Example: how to fetch data (commented out) ---
+    // fetch('https://jsonplaceholder.typicode.com/todos/1')
+    //   .then(r => r.json())
+    //   .then(data => console.log('Example fetch result:', data))
+    //   .catch(err => console.error('Fetch failed', err));
+
+  </script>
+</body>
+</html>

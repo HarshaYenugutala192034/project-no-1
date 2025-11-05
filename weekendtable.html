@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weekend Schedule</title>
+  <style>
+    :root{
+      --bg: #f6f8fb;
+      --card: #fff;
+      --accent: #6c5ce7;
+      --muted: #666;
+      --border: #e3e8ef;
+    }
+    body{
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 40px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrap{
+      width: 100%;
+      max-width: 820px;
+    }
+
+    header{
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1{
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: 0.6px;
+      color: #111;
+    }
+    header p{ margin:6px 0 0; color:var(--muted); }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(20,30,60,0.06);
+    }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.98rem;
+    }
+
+    th, td{
+      padding: 14px 12px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    thead th{
+      background: linear-gradient(90deg, rgba(108,92,231,0.08), rgba(108,92,231,0.02));
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    tbody tr:last-child td{ border-bottom: none; }
+
+    .time{
+      text-align: left;
+      color: var(--muted);
+      font-weight: 600;
+      width: 36%;
+    }
+
+    /* highlight cells */
+    .activity{
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: inline-block;
+      min-width: 120px;
+    }
+    .fun{ background: #e8f0ff; color: #1e3a8a; }
+    .study{ background: #fff4e6; color: #8a4b00; }
+    .rest{ background: #ecfdf5; color: #065f46; }
+    .errand{ background: #fff0f6; color: #832b6a; }
+
+    /* responsive: stack on small screens */
+    @media (max-width: 640px){
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tbody tr {
+        margin: 12px 0;
+        background: transparent;
+        border: none;
+        padding: 0;
+      }
+      td {
+        padding: 8px 10px;
+        border: none;
+      }
+      td.time {
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      td[data-day]{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+      }
+      .activity{ min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Weekend Schedule</h1>
+      <p>Plan your Saturday & Sunday — mornings, afternoons, evenings.</p>
+    </header>
+
+    <div class="card">
+      <table aria-label="Weekend schedule table">
+        <thead>
+          <tr>
+            <th class="time">Time</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="time">Morning (7:00 — 11:00)</td>
+            <td data-day="sat">
+              <span class="activity fun">Jogging & Breakfast</span>
+            </td>
+            <td data-day="sun">
+              <span class="activity rest">Sleep in & Brunch</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="time">Late Morning (11:00 — 1:00)</td>
+            <td data-day="sat">
+              <span class="activity study">Personal Project / Coding</span>
+            </td>
+            <td data-day="sun">
+              <span class="activity errand">Groceries / Errands</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="time">Afternoon (1:00 — 5:00)</td>
+            <td data-day="sat">
+              <span class="activity fun">Meet Friends / Basketball</span>
+            </td>
+            <td data-day="sun">
+              <span class="activity study">Study / Read</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="time">Evening (5:00 — 9:00)</td>
+            <td data-day="sat">
+              <span class="activity rest">Movie Night</span>
+            </td>
+            <td data-day="sun">
+              <span class="activity rest">Family Time / Prep for Week</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="time">Night (9:00 — 11:00)</td>
+            <td data-day="sat">
+              <span class="activity rest">Relax & Plan</span>
+            </td>
+            <td data-day="sun">
+              <span class="activity rest">Wind down / Early Sleep</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
