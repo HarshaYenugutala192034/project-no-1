@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Y. Harsha | Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #74b9ff, #a29bfe);
+      color: #2d3436;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background: #0984e3;
+      color: white;
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      margin: 20px 0;
+    }
+
+    button {
+      background: #6c5ce7;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #a29bfe;
+      transform: scale(1.05);
+    }
+
+    section {
+      display: none;
+      padding: 20px;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 700px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #b2bec3;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #636e72;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Y. Harsha - Profile</header>
+
+  <nav>
+    <button onclick="showSection('week')">Week Table</button>
+    <button onclick="showSection('info')">My Info</button>
+    <button onclick="showSection('javascript')">JavaScript</button>
+    <button onclick="showSection('css')">CSS</button>
+    <button onclick="showSection('events')">My Events</button>
+  </nav>
+
+  <section id="week">
+    <h2>Weekly Schedule</h2>
+    <table>
+      <tr><th>Day</th><th>Activity</th></tr>
+      <tr><td>Monday</td><td>College</td></tr>
+      <tr><td>Tuesday</td><td>Project Work</td></tr>
+      <tr><td>Wednesday</td><td>Lab Session</td></tr>
+      <tr><td>Thursday</td><td>Sports Practice</td></tr>
+      <tr><td>Friday</td><td>Group Study</td></tr>
+      <tr><td>Saturday</td><td>Personal Learning</td></tr>
+      <tr><td>Sunday</td><td>Rest Day</td></tr>
+    </table>
+  </section>
+
+  <section id="info">
+    <h2>About Me</h2>
+    <p>Hello! I am <strong>Y. Harsha</strong>, a passionate learner interested in technology, web development, and design. I enjoy building creative and functional web pages using HTML, CSS, and JavaScript.</p>
+  </section>
+
+  <section id="javascript">
+    <h2>JavaScript Example</h2>
+    <p>Click the button below to see JavaScript in action 👇</p>
+    <button onclick="showMessage()">Click Me!</button>
+    <p id="message"></p>
+  </section>
+
+  <section id="css">
+    <h2>CSS Example</h2>
+    <p>CSS (Cascading Style Sheets) is used to style the web page. The background gradient, button effects, and rounded sections are all created with CSS!</p>
+  </section>
+
+  <section id="events">
+    <h2>My Events</h2>
+    <ul style="text-align: left; display: inline-block;">
+      <li>Hackathon Participation - Jan 2025</li>
+      <li>Web Design Workshop - Feb 2025</li>
+      <li>AI & Coding Bootcamp - Mar 2025</li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Y. Harsha | All Rights Reserved
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function showMessage() {
+      document.getElementById('message').innerText = "Hello, Harsha! JavaScript is working perfectly!";
+    }
+
+    // Show "My Info" section by default
+    showSection('info');
+  </script>
+</body>
+</html>
